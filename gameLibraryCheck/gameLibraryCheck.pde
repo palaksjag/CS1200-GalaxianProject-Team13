@@ -2,6 +2,7 @@ import sprites.utils.*;
 import sprites.maths.*;
 import sprites.*;
 import processing.sound.*;
+import gifAnimation.*; //Import gifAnimation library
 
 Sprite ship;
 StopWatch stopWatch = new StopWatch();
@@ -9,10 +10,16 @@ StopWatch stopWatch = new StopWatch();
 KeyboardController kbController;
 
 SoundFile soundPlayer;
+Gif myAnimation;
 
 public void setup()
 {
   size(700, 500);
+  size(400, 400);
+  
+  //Loads and plays an animated background GIF 
+  myAnimation = new Gif(this, "backgroundGif.gif");
+  myAnimation.play();
 
   ship = new Sprite(this, "ship.png", 1, 1, 50);
   ship.setXY(width/2, height - 30);
@@ -64,4 +71,5 @@ void keyReleased()
 void draw() {
   background(0);
   S4P.drawSprites();
+  image(myAnimation, 200, 200); //displays the animated GIF 
 }
